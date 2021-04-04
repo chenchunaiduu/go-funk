@@ -30,6 +30,10 @@ type Foo struct {
 	BarInterface     interface{}
 	BarPointer       interface{}
 	GeneralInterface interface{}
+
+	ZeroBoolValue   bool
+	ZeroIntValue    int
+	ZeroIntPtrValue *int
 }
 
 func (f Foo) TableName() string {
@@ -68,8 +72,11 @@ var foo = &Foo{
 		bar,
 		bar,
 	},
-	BarInterface: bar,
-	BarPointer:   &bar,
+	BarInterface:    bar,
+	BarPointer:      &bar,
+	ZeroBoolValue:   false,
+	ZeroIntValue:    0,
+	ZeroIntPtrValue: nil,
 }
 
 var foo2 = &Foo{
@@ -108,4 +115,12 @@ var m2 = map[string]interface{}{
 	"firstname": "dark",
 	"lastname":  "vador",
 	"age":       30,
+}
+
+type FooUnexported struct {
+	unexported bool
+}
+
+var fooUnexported = &FooUnexported{
+	unexported: true,
 }

@@ -9,10 +9,22 @@ import (
 func Get(out interface{}, path string) interface{} {
 	result := get(reflect.ValueOf(out), path)
 
-	if result.Kind() != reflect.Invalid && !result.IsZero() {
+	if result.Kind() != reflect.Invalid && !result.IsZero() && result.CanInterface() {
 		return result.Interface()
 	}
 
+	return nil
+}
+
+func GetAllowZero(out interface{}, path string) interface{} {
+	result := get(reflect.ValueOf(out), path)
+
+	if result.Kind() != reflect.Invalid && result.CanInterface() {
+		if result.Kind() == reflect.Ptr && result.IsZero() {
+			return nil
+		}
+		return result.Interface()
+	}
 	return nil
 }
 
