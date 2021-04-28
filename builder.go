@@ -5,6 +5,7 @@ import (
 	"reflect"
 )
 
+// This is just an upgrade to 0.8.3 to deal with go.mod cache issues
 // Builder contains all tools which can be chained.
 type Builder interface {
 	Chunk(size int) Builder
