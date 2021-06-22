@@ -833,3 +833,4 @@ Authors
 .. _gorm: https://github.com/jinzhu/gorm
 .. _sqlx: https://github.com/jmoiron/sqlx
 .. _godoc: https://godoc.org/github.com/thoas/go-funk
+
